@@ -1,21 +1,26 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+// import api from "../api/employees";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
+import axios from "axios";
+// import { Link } from "react-router-dom";
 
 function LoginForm() {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const inputRef = useRef();
+  const passRef = useRef();
   // Generate JSX code for error message
   // const renderErrorMessage = (name) =>
   //   name === errorMessages.name && (
   //     <div className="error">{errorMessages.message}</div>
   //   );
   const [usersData, _userData] = useState();
-  console.log(usersData);
   useEffect(() => {
     axios
       .get(`http://localhost:3000/employees`)
       .then((res) => {
+        // console.log(res.status);
+        // console.log(res.data);
         const userData = res.data;
         _userData(userData);
       })
@@ -36,24 +41,25 @@ function LoginForm() {
     uname: "invalid username",
     pass: "invalid password",
   };
-  const handleSubmit = (event) => {
+
+  const handleLogin = (event) => {
+    const inputData = inputRef.current.value;
+    const passData = passRef.current.value;
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
-
     // Find user login info
-    const userData = usersData.find(
-      (user) => user.username === uname.value || user.first_name === uname.value
+    const userLoginData = usersData.find(
+      (user) => user.username === inputData || user.first_name === inputData
     );
     // Compare user info
-    if (userData) {
-      if (userData.pass !== pass.value) {
+    if (userLoginData) {
+      if (userLoginData.pass !== passData) {
         // Invalid password
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
-        _userData(userData.first_name + " " + userData.last_name);
+        _userData(userLoginData.first_name + " " + userLoginData.last_name);
       }
     } else {
       // Username not found
@@ -70,19 +76,20 @@ function LoginForm() {
   // JSX code for login form
   const renderForm = (
     <div className="form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required />
+          <input type="text" name="uname" required ref={inputRef} />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" required />
+          <input type="password" name="pass" required ref={passRef} />
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
           <input type="submit" />
+          {/* <Link to="/counters"></Link> */}
         </div>
       </form>
     </div>
@@ -92,9 +99,11 @@ function LoginForm() {
       <h1>Please Login to Continue</h1>
       <div className="app">
         <div className="login-form">
-          <div className="title">Sign In</div>
+          <div className="title">Login In</div>
           {isSubmitted ? (
-            <div>{usersData} is successfully logged in</div>
+            <>
+              <div>{usersData} is successfully logged in</div>
+            </>
           ) : (
             renderForm
           )}

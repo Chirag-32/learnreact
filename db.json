@@ -42,6 +42,45 @@
       "last_name": "Chawla",
       "username": "chirag3295",
       "pass": "chirag12!@"
+    },
+    {
+      "username": "simran",
+      "pass": "simran789",
+      "id": 21
+    },
+    {
+      "username": "simranjeet",
+      "pass": "simran789",
+      "id": 22
+    },
+    {
+      "id": 23,
+      "username": "chirag111",
+      "pass": "chirag22"
+    },
+    {
+      "id": 24,
+      "username": "talim73",
+      "pass": "ansari86@gh"
+    },
+    {
+      "id": 25,
+      "username": "",
+      "pass": "salesh123"
+    },
+    {
+      "id": 26,
+      "username": "",
+      "first_name": "Talim",
+      "last_name": "Ansari",
+      "pass": "talim221"
+    },
+    {
+      "id": 27,
+      "username": "baljeet636",
+      "first_name": "Baljeet",
+      "last_name": "Kumar",
+      "pass": "baljeet890"
     }
   ]
 }

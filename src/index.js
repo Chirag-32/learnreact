@@ -10,11 +10,13 @@ import "slick-carousel/slick/slick-theme.css";
 // import SlickSlider from "./components/slickSlider";
 import Timer from "./components/Timerjsx";
 import LoginForm from "./components/login";
+import SignIn from "./components/signup";
 ReactDOM.render(
   <React.StrictMode>
     <App />
     <Counters />
     <Timer />
+    <SignIn />
     <LoginForm />
     {/* <SlickSlider /> */}
   </React.StrictMode>,
