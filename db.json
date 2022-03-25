@@ -18,7 +18,13 @@
       "last_name": "Doe",
       "email": "janedoe@abc.com",
       "gender": "Female",
-      "status": "New"
+      "status": "New",
+      "my-tasks": [
+        {
+          "title": "language-change",
+          "summary": "need to change text on all landing pages"
+        }
+      ]
     },
     {
       "id": 3,
@@ -57,30 +63,6 @@
       "id": 23,
       "username": "chirag111",
       "pass": "chirag22"
-    },
-    {
-      "id": 24,
-      "username": "talim73",
-      "pass": "ansari86@gh"
-    },
-    {
-      "id": 25,
-      "username": "",
-      "pass": "salesh123"
-    },
-    {
-      "id": 26,
-      "username": "",
-      "first_name": "Talim",
-      "last_name": "Ansari",
-      "pass": "talim221"
-    },
-    {
-      "id": 27,
-      "username": "baljeet636",
-      "first_name": "Baljeet",
-      "last_name": "Kumar",
-      "pass": "baljeet890"
     }
-  ]
+      ]
 }

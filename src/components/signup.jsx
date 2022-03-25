@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Form from "react-bootstrap/Form"
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [signIn, _signIn] = useState({
     id: "",
     uname: "",
@@ -9,6 +12,7 @@ function SignIn() {
     lastname: "",
     pass: "",
   });
+  const navigate = useNavigate();
   // const addContactHandler = async (contact) => {
   //   console.log(contact);
   //   const request = {
@@ -43,16 +47,23 @@ function SignIn() {
         // console.log(response.data);
       })
       .catch((error) => console.log(error));
+    setIsSubmitted(true);
+  };
+  const navigateRout = () => {
+    setTimeout(() => {
+      navigate("/add-task");
+    }, 3000);
   };
   return (
     <div>
       <h1>Register or Create new account</h1>
       <hr />
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <label htmlFor="name">
           User Name
           <input
             type="text"
+            required
             name="name"
             value={signIn.name}
             onChange={handleChange}
@@ -63,6 +74,7 @@ function SignIn() {
           <input
             type="text"
             name="fname"
+            required
             value={signIn.fname}
             onChange={handleChange}
           />
@@ -72,6 +84,7 @@ function SignIn() {
           <input
             type="text"
             name="lname"
+            required
             value={signIn.lname}
             onChange={handleChange}
           />
@@ -81,12 +94,23 @@ function SignIn() {
           <input
             type="text"
             name="pass"
+            required
             value={signIn.password}
             onChange={handleChange}
           />
         </label>
         <button type="submit">Register</button>
-      </form>
+      </Form>
+      {isSubmitted ? (
+        <>
+          <div>
+            <div>{signIn.first_name} is successfully logged in</div>
+            {navigateRout()}
+          </div>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

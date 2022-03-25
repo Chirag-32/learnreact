@@ -2,18 +2,15 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
-// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const inputRef = useRef();
   const passRef = useRef();
-  // Generate JSX code for error message
-  // const renderErrorMessage = (name) =>
-  //   name === errorMessages.name && (
-  //     <div className="error">{errorMessages.message}</div>
-  //   );
+  const navigate = useNavigate();
+
   const [usersData, _userData] = useState();
   useEffect(() => {
     axios
@@ -25,18 +22,12 @@ function LoginForm() {
         _userData(userData);
       })
       .catch((error) => console.log(error));
+    // setTimeout(() => {
+    //   console.log("Hello, World!");
+    //   <Navigate to="/add-task" />;
+    // }, 3000);
   }, []);
 
-  // const database = [
-  //   {
-  //     username: "user1",
-  //     password: "pass1",
-  //   },
-  //   {
-  //     username: "user2",
-  //     password: "pass2",
-  //   },
-  // ];
   const errors = {
     uname: "invalid username",
     pass: "invalid password",
@@ -60,6 +51,8 @@ function LoginForm() {
       } else {
         setIsSubmitted(true);
         _userData(userLoginData.first_name + " " + userLoginData.last_name);
+        // setTimeout(() => {
+        // }, 1000)
       }
     } else {
       // Username not found
@@ -72,7 +65,15 @@ function LoginForm() {
     name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
     );
-
+  // useEffect(() => {
+  //   setIsSubmitted(true);
+  //   console.log("redirect to")
+  //   setTimeout(() => {
+  //       <Navigate to="/timer" />;
+  //       // setCount('Timeout called!');
+  //     }, 1000);
+  //     return () => clearTimeout();
+  //   }, []);
   // JSX code for login form
   const renderForm = (
     <div className="form">
@@ -89,11 +90,17 @@ function LoginForm() {
         </div>
         <div className="button-container">
           <input type="submit" />
-          {/* <Link to="/counters"></Link> */}
         </div>
       </form>
     </div>
   );
+  const navigateRout = () => {
+    setTimeout(() => {
+      navigate("/add-task");
+    }, 3000);
+  };
+
+  // const handleNavigate = () => {};
   return (
     <div>
       <h1>Please Login to Continue</h1>
@@ -102,7 +109,9 @@ function LoginForm() {
           <div className="title">Login In</div>
           {isSubmitted ? (
             <>
-              <div>{usersData} is successfully logged in</div>
+              <div>
+                {usersData} is successfully logged in... {navigateRout()}
+              </div>
             </>
           ) : (
             renderForm

@@ -1,8 +1,50 @@
-import React, { Component } from 'react';
-class Navbar extends React.Component {
-    render() { 
-        return <div></div>;
-    }
+import React, { Component } from "react";
+import { Navbar, NavbarBrand, Nav } from "reactstrap";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import SignIn from "./signup";
+// import Timer from "./Timerjsx";
+// import Counter from "./counter";
+// import LoginForm from "./login";
+// import Home from "./home";
+import { Outlet, NavLink } from "react-router-dom";
+class Navigation extends Component {
+  render() {
+    return (
+      <>
+        <Navbar dark color="primary">
+          <div className="container">
+            <NavbarBrand href="/">ReactLearning</NavbarBrand>
+            <Nav className="me-auto">
+              <NavLink className="nav-link" to="timer">
+                Timer
+              </NavLink>
+              <NavLink className="nav-link" to="login">
+                Login
+              </NavLink>
+              <NavLink className="nav-link" to="signup">
+                SignUp
+              </NavLink>
+              <NavLink className="nav-link" to="add-task">
+                Add Task
+              </NavLink>
+            </Nav>
+          </div>
+          <Outlet />
+        </Navbar>
+
+        {/* <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginForm />}>
+              <Route index element={<Home />} />
+              <Route path="counter" element={<Counter />} />
+              <Route path="timer" element={<Timer />} />
+              <Route path="signup" element={<SignIn />} />
+            </Route>
+          </Routes>
+        </BrowserRouter> */}
+      </>
+    );
+  }
 }
- 
-export default Navbar;
+
+export default Navigation;
