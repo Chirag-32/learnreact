@@ -64,5 +64,17 @@
       "username": "chirag111",
       "pass": "chirag22"
     }
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Label Changes",
+          "summary": "need to change label on forms"
+        },
+        {
+          "id": 2,
+          "title": "language-change",
+          "summary": "need to change text on all landing pages"
+        }
       ]
 }
