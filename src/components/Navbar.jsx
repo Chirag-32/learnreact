@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Navbar, NavbarBrand, Nav } from "reactstrap";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import SignIn from "./signup";
@@ -7,10 +7,11 @@ import { Navbar, NavbarBrand, Nav } from "reactstrap";
 // import LoginForm from "./login";
 // import Home from "./home";
 import { Outlet, NavLink } from "react-router-dom";
-class Navigation extends Component {
-  render() {
+function Navigation(props) {
+
     return (
       <>
+
         <Navbar dark color="primary">
           <div className="container">
             <NavbarBrand href="/">ReactLearning</NavbarBrand>
@@ -18,12 +19,16 @@ class Navigation extends Component {
               <NavLink className="nav-link" to="timer">
                 Timer
               </NavLink>
-              <NavLink className="nav-link" to="login">
+             {props.username ? <NavLink className="nav-link" to="">
+                {props.username}
+              </NavLink> : false} 
+              {props.username ? false :<><NavLink className="nav-link" to="login">
                 Login
-              </NavLink>
+              </NavLink> 
               <NavLink className="nav-link" to="signup">
                 SignUp
               </NavLink>
+              </>}
               <NavLink className="nav-link" to="add-task">
                 Add Task
               </NavLink>
@@ -44,7 +49,7 @@ class Navigation extends Component {
         </BrowserRouter> */}
       </>
     );
-  }
+  
 }
 
 export default Navigation;

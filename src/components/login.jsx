@@ -4,43 +4,41 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function LoginForm() {
+function LoginForm(props) {
+
+  // console.log(props._userData);
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const inputRef = useRef();
   const passRef = useRef();
   const navigate = useNavigate();
-
-  const [usersData, _userData] = useState();
+  // const {_userData,usersData,setusername} = props;
+  // const [usersData, _userData] = useState();
   useEffect(() => {
     axios
       .get(`http://localhost:3000/employees`)
       .then((res) => {
-        // console.log(res.status);
-        // console.log(res.data);
-        const userData = res.data;
-        _userData(userData);
+      const userData = res.data;
+      // console.log(userData)
+        props._userData(userData);
       })
       .catch((error) => console.log(error));
-    // setTimeout(() => {
-    //   console.log("Hello, World!");
-    //   <Navigate to="/add-task" />;
-    // }, 3000);
+    
   }, []);
 
   const errors = {
     uname: "invalid username",
     pass: "invalid password",
   };
-
+  let inputData;
+  let passData;
   const handleLogin = (event) => {
-    const inputData = inputRef.current.value;
-    const passData = passRef.current.value;
+    inputData = inputRef.current.value;
+    passData = passRef.current.value;
     //Prevent page reload
     event.preventDefault();
-
     // Find user login info
-    const userLoginData = usersData.find(
+    const userLoginData = props.usersData.find(
       (user) => user.username === inputData || user.first_name === inputData
     );
     // Compare user info
@@ -50,7 +48,10 @@ function LoginForm() {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
-        _userData(userLoginData.first_name + " " + userLoginData.last_name);
+        props._userData(userLoginData.first_name + " " + userLoginData.last_name);
+        props.setusername(inputData)
+        console.log(userLoginData)
+        props._UserLogin(userLoginData)
         // setTimeout(() => {
         // }, 1000)
       }
@@ -59,22 +60,14 @@ function LoginForm() {
       setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
-
+  
+ 
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
     );
-  // useEffect(() => {
-  //   setIsSubmitted(true);
-  //   console.log("redirect to")
-  //   setTimeout(() => {
-  //       <Navigate to="/timer" />;
-  //       // setCount('Timeout called!');
-  //     }, 1000);
-  //     return () => clearTimeout();
-  //   }, []);
-  // JSX code for login form
+  
   const renderForm = (
     <div className="form">
       <form onSubmit={handleLogin}>
@@ -110,7 +103,7 @@ function LoginForm() {
           {isSubmitted ? (
             <>
               <div>
-                {usersData} is successfully logged in... {navigateRout()}
+                {props.usersData} is successfully logged in... {navigateRout()}
               </div>
             </>
           ) : (

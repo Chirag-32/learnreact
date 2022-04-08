@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-function AddTask() {
+function AddTask(props) {
   // const [task, settask] = useState({title: "",
   //     summary: "",});
   //   const [contacts, setContacts] = useState([]);
@@ -43,23 +43,51 @@ function AddTask() {
     });
   };
   const handleSubmit = (e) => {
+    let id = props.userLogin.id;
     e.preventDefault();
     const userTask = {
       id: task.id,
       title: task.title,
       summary: task.summary,
     };
-    axios
-      .post("http://localhost:3000/tasks", userTask)
-      // .then((response) => {
+    const usertask = [];
+    usertask.push(userTask);
+    console.log(usertask);
+    // let body = {
+    //   myTasks: usertask,
+    // };
+    fetch(`http://localhost:3000/employees/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(usertask),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
+      console.log(response.data);
+    });
 
-      // })
-      .catch((error) => console.log(error));
+    // axios
+    //   .post(`http://localhost:3000/employees?id=${id}`, body)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((error) => console.log(error));
+    // axios.post("http://localhost:3000/employees?username=jane11", {
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstonsssse'
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
     setIsSubmitted(true);
   };
   return (
     <div className="ui main">
       <h2>Add a New Task</h2>
+      {/* <h2>{props.userLogin.username ? props.userLogin.username: false}</h2> */}
       <form className="ui form" onSubmit={handleSubmit}>
         <div className="field">
           <label>Title</label>
@@ -86,7 +114,7 @@ function AddTask() {
       {isSubmitted ? (
         <>
           <div>
-            <div>{task.title} is successfully added</div>
+            <div>[{task.title}] is successfully added</div>
             {/* <Navigate to="/add" /> */}
           </div>
         </>
