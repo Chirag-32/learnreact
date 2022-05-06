@@ -8,14 +8,21 @@
       "email": "johndoe@abc.com",
       "gender": "Male",
       "status": "Terminated",
-      "pass": "John123"
+      "pass": "John123",
+      "myTasks": [
+        {
+          "id": "",
+          "title": "hlo",
+          "summary": "new task"
+        },
+        {
+          "id": "",
+          "title": "new task",
+          "summary": "new taskkk"
+        }
+      ]
     },
     {
-      "0": {
-        "id": "",
-        "title": "feedback changes",
-        "summary": "need to show login message box for min 5 seconnds and the redirect to other component"
-      },
       "id": 2,
       "username": "jane11",
       "pass": "jane123",
@@ -24,10 +31,31 @@
       "email": "janedoe@abc.com",
       "gender": "Female",
       "status": "New",
-      "my-tasks": [
+      "myTasks": [
         {
-          "title": "language-change",
-          "summary": "need to change text on all landing pages"
+          "id": 1,
+          "title": "hlo",
+          "summary": "new task added"
+        },
+        {
+          "id": 44,
+          "title": "mollkknj",
+          "summary": "bjhjnhk"
+        },
+        {
+          "id": null,
+          "title": "jn",
+          "summary": "jn"
+        },
+        {
+          "id": 4,
+          "title": "d",
+          "summary": "d"
+        },
+        {
+          "id": 5,
+          "title": "ss",
+          "summary": "ss"
         }
       ]
     },
@@ -68,6 +96,53 @@
       "id": 23,
       "username": "chirag111",
       "pass": "chirag22"
+    },
+    {
+      "id": 24,
+      "username": "baljeet888",
+      "first_name": "baljeet",
+      "last_name": "kumar",
+      "pass": "baljeet123",
+      "myTasks": [
+        {
+          "id": "",
+          "title": "hlo",
+          "summary": "hiii"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "username": "baljeetkumar",
+      "first_name": "baljeet",
+      "last_name": "kumar",
+      "pass": "baljeet123",
+      "myTasks": [
+        {
+          "id": "",
+          "title": "qq",
+          "summary": "aa"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "username": "priyanka11",
+      "first_name": "priyanka",
+      "last_name": "sharma",
+      "pass": "priyanka123",
+      "myTasks": [
+        {
+          "id": 1,
+          "title": "hii",
+          "summary": "new"
+        },
+        {
+          "id": 2,
+          "title": "hlo",
+          "summary": "hiiiiiiiiiiiiiiii"
+        }
+      ]
     }
   ],
   "tasks": [
@@ -85,6 +160,71 @@
       "id": 3,
       "title": "Label Changes",
       "summary": "CLONE - LP: Checkout - Update form controls for accessibility"
+    },
+    {
+      "id": 4,
+      "title": "hlo",
+      "summary": "new task"
+    },
+    {
+      "id": 5,
+      "title": "hlo",
+      "summary": "new task added"
+    },
+    {
+      "id": 6,
+      "title": "new ",
+      "summary": "chekdasd"
+    },
+    {
+      "id": 7,
+      "title": "hlo",
+      "summary": "task"
+    },
+    {
+      "id": 8,
+      "title": "hlo",
+      "summary": "new task"
+    },
+    {
+      "id": 9,
+      "title": "dsg",
+      "summary": "dsfs"
+    },
+    {
+      "id": 10,
+      "title": "asdas",
+      "summary": "dsfds"
+    },
+    {
+      "title": "safdas",
+      "summary": "dsfds",
+      "id": 11
+    },
+    {
+      "id": "5cbd8f4-d758-886a-e14-2ef6b77bf4",
+      "title": "new task",
+      "summary": "new task added for testing"
+    },
+    {
+      "id": 12,
+      "title": "hii",
+      "summary": "new task test"
+    },
+    {
+      "id": 13,
+      "title": "qq",
+      "summary": "ww"
+    },
+    {
+      "id": 14,
+      "title": "task",
+      "summary": "new task added"
+    },
+    {
+      "id": 15,
+      "title": "hfaswhcfhfc",
+      "summary": "bdkqa"
     }
   ],
   "logged_in": [],

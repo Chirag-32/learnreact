@@ -33,6 +33,7 @@ function SignIn() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log("taskid",signIn.id);
     const userData = {
       id: signIn.id,
       username: signIn.name,
@@ -65,6 +66,7 @@ function SignIn() {
             type="text"
             required
             name="name"
+            autoComplete="off"
             value={signIn.name}
             onChange={handleChange}
           />
@@ -75,6 +77,7 @@ function SignIn() {
             type="text"
             name="fname"
             required
+            autoComplete="off"
             value={signIn.fname}
             onChange={handleChange}
           />
@@ -85,6 +88,7 @@ function SignIn() {
             type="text"
             name="lname"
             required
+            autoComplete="off"
             value={signIn.lname}
             onChange={handleChange}
           />
@@ -95,6 +99,7 @@ function SignIn() {
             type="text"
             name="pass"
             required
+            autoComplete="off"
             value={signIn.password}
             onChange={handleChange}
           />

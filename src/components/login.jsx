@@ -14,7 +14,7 @@ function LoginForm(props) {
   const navigate = useNavigate();
   // const {_userData,usersData,setusername} = props;
   // const [usersData, _userData] = useState();
-  useEffect(() => {
+  const userlogin = () => {
     axios
       .get(`http://localhost:3000/employees`)
       .then((res) => {
@@ -23,8 +23,8 @@ function LoginForm(props) {
         props._userData(userData);
       })
       .catch((error) => console.log(error));
-    
-  }, []);
+  }
+  
 
   const errors = {
     uname: "invalid username",
@@ -33,6 +33,7 @@ function LoginForm(props) {
   let inputData;
   let passData;
   const handleLogin = (event) => {
+    
     inputData = inputRef.current.value;
     passData = passRef.current.value;
     //Prevent page reload
@@ -61,7 +62,10 @@ function LoginForm(props) {
     }
   };
   
- 
+  useEffect(() => {
+    userlogin();
+    
+  }, []);
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
@@ -73,12 +77,12 @@ function LoginForm(props) {
       <form onSubmit={handleLogin}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required ref={inputRef} />
+          <input type="text" name="uname" autoComplete="off" required ref={inputRef} />
           {renderErrorMessage("uname")}
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" required ref={passRef} />
+          <input type="password" name="pass" autoComplete="off" required ref={passRef} />
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">

@@ -1,8 +1,9 @@
 // import React from "react";
+// import axios from "axios";
 import axios from "axios";
 import React, { useState } from "react";
-
 function AddTask(props) {
+  // console.log(props.userLogin.myTasks)
   // const [task, settask] = useState({title: "",
   //     summary: "",});
   //   const [contacts, setContacts] = useState([]);
@@ -34,38 +35,75 @@ function AddTask(props) {
     title: "",
     summary: "",
   });
-
+  const [title, settitle] = useState({
+    title: "",
+  });
+  // console.log(task);
   const handleChange = (e) => {
-    const value = e.target.value;
+    const { name, value } = e.target;
     _Task({
       ...task,
-      [e.target.name]: value,
+      [name]: value,
     });
+    settitle({ title: task.title });
   };
   const handleSubmit = (e) => {
-    let id = props.userLogin.id;
     e.preventDefault();
+    let idValue;
+
+    // const rand = min + Math.random() * (max - min);
+    if(props.userLogin.myTasks){
+      idValue = props.userLogin.myTasks.length + 1;
+    }
     const userTask = {
-      id: task.id,
+      id: parseInt(idValue),
       title: task.title,
       summary: task.summary,
     };
-    const usertask = [];
-    usertask.push(userTask);
-    console.log(usertask);
-    // let body = {
-    //   myTasks: usertask,
-    // };
-    fetch(`http://localhost:3000/employees/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify(usertask),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => {
-      console.log(response.data);
-    });
+    // const usertask = [];
+    if (props.userLogin) {
+      // console.log("user login");
+      // const a = props.userLogin.myTasks;
+      if (!props.userLogin.myTasks) {
+        // console.log("no avilable");
+        props.userLogin.myTasks = [
+          {
+            id: 1,
+            title: task.title,
+            summary: task.summary,
+          },
+        ];
+      } else {
+        props.userLogin.myTasks.push(userTask);
+      }
 
+      //   a.push(userTask);
+      //   console.log("not available");
+      //  myTasks.push(props.userLogin);
+      //  console.log(myTasks);
+      //  a.push(userTask)
+      //  console.log(a);
+
+      // usertask.push(a);
+
+      // console.log(props.userLogin.myTasks);
+      let body = {
+        myTasks: props.userLogin.myTasks,
+        
+      };
+      let userid = props.userLogin.id;
+      fetch(`http://localhost:3000/employees/${userid}`, {
+        method: "PATCH",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => {
+        console.log(response.data);
+      });
+    } else {
+      axios.post("http://localhost:3000/tasks", userTask);
+    }
     // axios
     //   .post(`http://localhost:3000/employees?id=${id}`, body)
     //   .then((response) => {
@@ -82,7 +120,11 @@ function AddTask(props) {
     // .catch(function (error) {
     //   console.log(error);
     // });
+    // task.summary
+    // settitle({title:task.title});
     setIsSubmitted(true);
+    _Task({ title: "", summary: "" });
+    console.log(title);
   };
   return (
     <div className="ui main">
@@ -95,6 +137,7 @@ function AddTask(props) {
             type="text"
             name="title"
             placeholder="Title"
+            autoComplete="off"
             value={task.title}
             onChange={handleChange}
           />
@@ -105,6 +148,7 @@ function AddTask(props) {
             type="textarea"
             name="summary"
             placeholder="Summary"
+            autoComplete="off"
             value={task.summary}
             onChange={handleChange}
           />
@@ -114,7 +158,7 @@ function AddTask(props) {
       {isSubmitted ? (
         <>
           <div>
-            <div>[{task.title}] is successfully added</div>
+            <div>[{title.title}] is successfully added</div>
             {/* <Navigate to="/add" /> */}
           </div>
         </>
