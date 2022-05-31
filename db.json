@@ -19,6 +19,11 @@
           "id": "",
           "title": "new task",
           "summary": "new taskkk"
+        },
+        {
+          "id": 3,
+          "title": "new",
+          "summary": "new task"
         }
       ]
     },
@@ -141,6 +146,20 @@
           "id": 2,
           "title": "hlo",
           "summary": "hiiiiiiiiiiiiiiii"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "username": "amanmisra",
+      "first_name": "Aman",
+      "last_name": "Mishra",
+      "pass": "aman123",
+      "myTasks": [
+        {
+          "id": 1,
+          "title": "add new component",
+          "summary": "add a new component of edit task"
         }
       ]
     }

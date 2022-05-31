@@ -12,6 +12,8 @@ import Counters from "./components/counters";
 import LoginForm from "./components/login";
 import AddTask from "./components/to-do/addTask";
 import Contact from "./components/Contacts/Contacts";
+import SlickSlider from "./components/slickSlider";
+import SignUp from "./components/SignupNew";
 // import AddContact from "./components/Contacts/AddContact";
 function App() {
   const [usersData, _userData] = useState();
@@ -28,7 +30,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="counter" element={<Counters />} />
           <Route path="timer" element={<Timer />} />
-          <Route path="signup" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
           <Route
             path="login"
             element={
@@ -43,6 +45,7 @@ function App() {
           <Route path="add-task" element={<AddTask userLogin={userLogin} />} />
           {/* <Route path="contact" element={<Contact />} /> */}
           <Route path="contact" element={<Contact />} />
+          <Route path="slider" element={<SlickSlider />} />
           {/* </Route> */}
         </Routes>
       </div>

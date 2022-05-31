@@ -19,6 +19,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 .app {
   font-family: sans-serif;
   display: flex;
@@ -83,20 +84,106 @@ input[type="submit"]:hover {
   gap: 8px;
   margin: 10px;
 }
+
 .App-link {
   color: #61dafb;
 }
+
 .green h3 {
   background-color: #61dafb;
 }
+
 .navbar a {
   color: #fff;
 }
+
+.slick-prev:before,
+.slick-next:before {
+  color: orangered !important;
+}
+
+.btn-orange {
+  background-color: orangered;
+  color: #fff;
+}
+
+/* .blog-card {
+  margin: 15px;
+} */
+.slick-slide>div {
+  margin: 15px;
+}
+
+p.card-text {
+  text-align: justify;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* //signup new css */
+
+.form-section {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+  color: #adb5bd;
+}
+
+.form-background {
+  background: linear-gradient(35deg, #172b4d, #1a174d) !important;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.form-content {
+  position: relative;
+  height: 100%;
+  padding-top: 6rem;
+}
+
+.card-body {
+  background-color: #f4f5f7;
+}
+
+.custom-form input {
+  width: 100%;
+  border: none;
+}
+
+.input-group-alternative {
+  box-shadow: 0 1px 3px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%);
+  border: 0;
+  transition: box-shadow .15s ease;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-icon.mr-4:last-child {
+  margin-right: 0px !important;
+}
+
+.btn-icon.mr-4 IMG {
+  max-width: 100%;
+  width: 30px;
+}
+
+.form-section .btn-primary {
+  color: #fff;
+  background-color: #5e72e4;
+  border-color: #5e72e4;
+  box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
 }
