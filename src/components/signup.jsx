@@ -110,7 +110,7 @@ function SignIn() {
     }, 3000);
   };
   return (
-    <div>
+    <div className="form-section">
       <h1>Register or Create new account</h1>
       <hr />
       <Form onSubmit={handleSubmit}>
