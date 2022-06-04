@@ -100,3 +100,7 @@ input[type="submit"]:hover {
     transform: rotate(360deg);
   }
 }
+
+.submiterror {
+  color: red;
+}
