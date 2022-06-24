@@ -14,6 +14,9 @@ import AddTask from "./components/to-do/addTask";
 import Contact from "./components/Contacts/Contacts";
 import SlickSlider from "./components/slickSlider";
 import SignUp from "./components/SignupNew";
+import Task from "./components/tasks/Tasks";
+import "antd/dist/antd.css";
+
 // import AddContact from "./components/Contacts/AddContact";
 function App() {
   const [usersData, _userData] = useState();
@@ -46,6 +49,7 @@ function App() {
           {/* <Route path="contact" element={<Contact />} /> */}
           <Route path="contact" element={<Contact />} />
           <Route path="slider" element={<SlickSlider />} />
+          <Route path="tasks" element={<Task />} />
           {/* </Route> */}
         </Routes>
       </div>
