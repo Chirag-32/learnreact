@@ -42,6 +42,9 @@ function Navigation(props) {
             <NavLink className="nav-link" to="contact">
               Add Contact
             </NavLink>
+            <NavLink className="nav-link" to="tasks">
+              Learn Tasks
+            </NavLink>
           </Nav>
         </div>
         <Outlet />
